@@ -12,6 +12,9 @@ export class PresupuestoPagePage implements OnInit {
   presupuestoForm: FormGroup;
   gastos: Gasto[] = [];
   presupuesto: number;
+
+  toastMessage: string = '';
+  isToastVisible: boolean = false;
   constructor(private presupuestoService: PresupuestoService) {
     this.presupuestoForm = new FormGroup({
       gasto: new FormControl('', Validators.required),
@@ -24,6 +27,10 @@ export class PresupuestoPagePage implements OnInit {
 
   public submitForm() {
     if (this.presupuestoForm.valid) {
+      if (this.presupuestoForm.value.cantidad > this.presupuesto) {
+        this.mostrarToast('No tienes suficiente presupuesto');
+        return;
+      }
       this.presupuestoService.agregarGasto(this.presupuestoForm.value);
       this.presupuestoForm.reset();
       this.presupuesto = this.presupuestoService.presupuesto;
@@ -36,5 +43,13 @@ export class PresupuestoPagePage implements OnInit {
     this.gastos = this.presupuestoService.gastos;
   }
 
-  ngOnInit(): void {}
+  public mostrarToast(mensaje: string) {
+    this.toastMessage = mensaje;
+    this.isToastVisible = true;
+  }
+
+  ngOnInit(): void {
+    console.log('PresupuestoPagePage');
+    
+  }
 }

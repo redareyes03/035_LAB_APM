@@ -109,4 +109,14 @@
       </ion-grid>
     </div>
   </main>
+
+  
+  <!-- Toast -->
+  <ion-toast
+    [isOpen]="isToastVisible"
+    color="danger"
+    [message]="toastMessage"
+    [duration]="2000"    
+    (didDismiss)="isToastVisible = false"
+  ></ion-toast>
 </ion-content>
