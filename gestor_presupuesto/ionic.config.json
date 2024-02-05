@@ -1,0 +1,7 @@
+{
+  "name": "gestor_presupuesto",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
