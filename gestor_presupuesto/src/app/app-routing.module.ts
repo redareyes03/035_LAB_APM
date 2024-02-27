@@ -28,7 +28,15 @@ const routes: Routes = [
     path: 'paso2',
     loadChildren: () =>
       import('./pages/paso2/paso2.module').then((m) => m.Paso2PageModule),
+  },  {
+    path: 'recetas',
+    loadChildren: () => import('./pages/recetas/recetas.module').then( m => m.RecetasPageModule)
   },
+  {
+    path: 'detalle-receta',
+    loadChildren: () => import('./pages/detalle-receta/detalle-receta.module').then( m => m.DetalleRecetaPageModule)
+  },
+
 ];
 
 @NgModule({
